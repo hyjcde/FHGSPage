@@ -22,39 +22,41 @@ function initSlider() {
     const sliderControl = container.querySelector(".slider-control");
     const slideImage = container.querySelector(".slide-image");
 
-    if (slider && sliderControl) {
-      // 创建比较图像（克隆原始图像）
+    if (slider && sliderControl && slideImage) {
+      // 设置第一张原始图像为 3DGS 图像
+      slideImage.alt = "3DGS Feature Image";
+
+      // 创建比较图像（FHGS图像）
       const comparisonImage = document.createElement("img");
-      comparisonImage.src = "images/feature_slider_comparison.jpg"; // 需要替换为实际的比较图像
-      comparisonImage.classList.add("slide-image");
+      comparisonImage.src = "images/paper/compare2.png"; // FHGS特征图
+      comparisonImage.alt = "FHGS Feature Image";
+      comparisonImage.classList.add("slide-image", "comparison-image");
       comparisonImage.style.clipPath = "inset(0 50% 0 0)";
       slider.appendChild(comparisonImage);
 
       // 添加分隔线
       const divider = document.createElement("div");
-      divider.style.position = "absolute";
-      divider.style.top = "0";
-      divider.style.bottom = "0";
-      divider.style.width = "2px";
-      divider.style.left = "50%";
-      divider.style.backgroundColor = "white";
-      divider.style.zIndex = "10";
+      divider.className = "slider-divider";
       slider.appendChild(divider);
 
       // 添加滑动控制手柄
       const handle = document.createElement("div");
-      handle.style.position = "absolute";
-      handle.style.top = "50%";
-      handle.style.left = "50%";
-      handle.style.width = "40px";
-      handle.style.height = "40px";
-      handle.style.borderRadius = "50%";
-      handle.style.backgroundColor = "white";
-      handle.style.transform = "translate(-50%, -50%)";
-      handle.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
-      handle.style.zIndex = "11";
-      handle.style.cursor = "ew-resize";
+      handle.className = "slider-handle";
+      // 添加左右箭头图标到手柄
+      handle.innerHTML =
+        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>';
       slider.appendChild(handle);
+
+      // 添加标签
+      const leftLabel = document.createElement("div");
+      leftLabel.className = "slider-label left-label";
+      leftLabel.textContent = "3DGS";
+      slider.appendChild(leftLabel);
+
+      const rightLabel = document.createElement("div");
+      rightLabel.className = "slider-label right-label";
+      rightLabel.textContent = "FHGS";
+      slider.appendChild(rightLabel);
 
       // 监听滑块变化
       sliderControl.addEventListener("input", function () {
@@ -62,6 +64,11 @@ function initSlider() {
         comparisonImage.style.clipPath = `inset(0 ${100 - this.value}% 0 0)`;
         divider.style.left = position;
         handle.style.left = position;
+
+        // 根据滑块位置调整标签透明度
+        const value = parseFloat(this.value);
+        leftLabel.style.opacity = (100 - value) / 100;
+        rightLabel.style.opacity = value / 100;
       });
 
       // 初始化滑块位置
@@ -82,13 +89,24 @@ function initSlider() {
       function startDrag(e) {
         isDragging = true;
         e.preventDefault();
+        // 添加活跃状态类
+        slider.classList.add("active-sliding");
       }
 
       function drag(e) {
         if (!isDragging) return;
 
         const rect = slider.getBoundingClientRect();
-        const x = (e.clientX || e.touches[0].clientX) - rect.left;
+        let x;
+
+        if (e.clientX) {
+          x = e.clientX - rect.left;
+        } else if (e.touches && e.touches[0]) {
+          x = e.touches[0].clientX - rect.left;
+        } else {
+          return;
+        }
+
         const position = Math.max(0, Math.min(100, (x / rect.width) * 100));
 
         sliderControl.value = position;
@@ -97,6 +115,29 @@ function initSlider() {
 
       function endDrag() {
         isDragging = false;
+        // 移除活跃状态类
+        const sliders = document.querySelectorAll(".slider");
+        sliders.forEach((s) => s.classList.remove("active-sliding"));
+      }
+
+      // 添加交互提示
+      const overlay = slider.querySelector(".slider-overlay");
+      if (overlay) {
+        // 点击开始交互
+        slider.addEventListener("click", function () {
+          overlay.style.opacity = "0";
+          setTimeout(() => {
+            overlay.style.display = "none";
+          }, 500);
+        });
+
+        // 滑块移动也隐藏提示
+        sliderControl.addEventListener("input", function () {
+          overlay.style.opacity = "0";
+          setTimeout(() => {
+            overlay.style.display = "none";
+          }, 500);
+        });
       }
     }
   });

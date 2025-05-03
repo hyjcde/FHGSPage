@@ -169,10 +169,11 @@
     </section>
 
     <section class="overview container">
+      <h2>Feature Visualization</h2>
       <div class="comparison">
         <div class="image-container">
           <img
-            src="images/start.png"
+            src="images/paper/start.png"
             alt="FHGS features overview"
             class="full-width"
           />
@@ -180,25 +181,32 @@
             FHGS adopts non-differentiable features to ensure multi-view
             consistency while maintaining high-quality rendering
           </div>
-        </div>
-        <div class="slider-container">
-          <div class="slider">
-            <img
-              src="images/feature_slider.jpg"
-              class="slide-image"
-              alt="Feature visualization"
+          <div class="slider-container">
+            <div class="slider">
+              <img
+                src="images/paper/compare1.png"
+                class="slide-image"
+                alt="3DGS Feature visualization"
+              />
+              <div class="slider-overlay">
+                Drag to compare 3DGS and FHGS feature fusion
+              </div>
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              class="slider-control"
             />
-            <div class="slider-overlay">
-              Use the slider to visualize feature fusion
+            <div class="slider-caption">
+              <span class="slider-caption-text">
+                Interactive comparison: Drag the slider to see the difference
+                between 3DGS and FHGS feature fusion - FHGS achieves more
+                consistent feature representation
+              </span>
             </div>
           </div>
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value="50"
-            class="slider-control"
-          />
         </div>
       </div>
     </section>
@@ -247,7 +255,7 @@
       <h2>Methodology</h2>
       <div class="method-overview">
         <img
-          src="images/featurepipeline.png"
+          src="images/paper/featurepipeline.png"
           alt="Feature Fusion Pipeline"
           class="full-width"
         />
@@ -259,7 +267,7 @@
       <div class="method-details">
         <div class="method-item">
           <img
-            src="images/nondiff.png"
+            src="images/paper/nondiff.png"
             alt="Non-Differentiable Features"
             class="half-width"
           />
@@ -273,7 +281,7 @@
         </div>
         <div class="method-item">
           <img
-            src="images/dualdriveMe.png"
+            src="images/paper/dualdriveMe.png"
             alt="Dual-Drive Mechanism"
             class="half-width"
           />
@@ -294,7 +302,7 @@
         <div class="comparison-item">
           <h3>Feature Consistency Comparison</h3>
           <img
-            src="images/ablationstudy.png"
+            src="images/paper/ablationstudy.png"
             alt="Ablation Study Results"
             class="full-width"
           />
