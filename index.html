@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FHGS: Feature-Homogenized Gaussian Splatting</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 class="title">
+          <span class="highlight">FHGS</span>: Feature-Homogenized Gaussian
+          Splatting
+        </h1>
+        <h2 class="subtitle">
+          for 3D Scene Understanding with Multi-View Consistency
+        </h2>
+        <div class="conference">NeurIPS 2025</div>
+      </div>
+    </header>
+
+    <section class="authors container">
+      <div class="author-list">
+        <div class="author">
+          <a href="#">Q. G. Duan<sup>1</sup></a>
+        </div>
+        <div class="author">
+          <a href="#">Feihuang Xia<sup>2</sup></a>
+        </div>
+        <div class="author">
+          <a href="#">Benyun Zhao<sup>1</sup></a>
+        </div>
+        <div class="author">
+          <a href="#">Mingqiao Han<sup>1</sup></a>
+        </div>
+        <div class="author">
+          <a href="#">Yijun Huang<sup>1</sup></a>
+        </div>
+        <div class="author">
+          <a href="#">Ben M. Chen<sup>1</sup></a>
+        </div>
+      </div>
+      <div class="affiliation">
+        <div>
+          <sup>1</sup>Mechanical and Automation Erg, Chinese University of Hong
+          Kong
+        </div>
+        <div><sup>2</sup>BICMR, Peking University</div>
+      </div>
+    </section>
+
+    <section class="links container">
+      <div class="link-buttons">
+        <a href="#" class="button">Paper</a>
+        <a href="#" class="button">Video</a>
+        <a href="#" class="button">Code</a>
+        <a href="#" class="button">Demo</a>
+        <a href="#" class="button">Data</a>
+      </div>
+    </section>
+
+    <section class="overview container">
+      <div class="comparison">
+        <div class="image-container">
+          <img
+            src="images/start.png"
+            alt="FHGS features overview"
+            class="full-width"
+          />
+          <div class="caption">
+            FHGS adopts non-differentiable features to ensure multi-view
+            consistency while maintaining high-quality rendering
+          </div>
+        </div>
+        <div class="slider-container">
+          <div class="slider">
+            <img
+              src="images/feature_slider.jpg"
+              class="slide-image"
+              alt="Feature visualization"
+            />
+            <div class="slider-overlay">
+              Use the slider to visualize feature fusion
+            </div>
+          </div>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            class="slider-control"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="abstract container">
+      <h2>Abstract</h2>
+      <p>
+        In recent years, with the increasing demand for complex environmental
+        interaction in unmanned systems, 3D scene understanding has gradually
+        become a research focus. While traditional frameworks such as Multi-View
+        Stereo (MVS) and Simultaneous Localization and Mapping (SLAM) can
+        achieve geometric reconstruction, they exhibit limitations in high-level
+        semantic perception and scene understanding. Recent advancements in
+        Neural Radiance Fields (NeRF) and 3D Gaussian Splatting (3DGS) have
+        introduced novel paradigms for 3D scene representation through
+        differentiable frameworks, but the ultimate objective of scene
+        understanding requires not only precise geometric and appearance
+        reconstruction but also the integration of semantic features.
+      </p>
+      <p>
+        We propose FHGS (Feature-Homogenized Gaussian Splatting), a Feature
+        Fusion Method based on GS framework. Leveraging a differentiable
+        framework, FHGS establishes bidirectional associations between 2D
+        features and 3D feature fields, enabling end-to-end optimized multi-view
+        consistent feature fusion. By introducing physics-inspired principles
+        from electric field modeling, we propose a dual-drive mechanism
+        combining External Potential Field Driving and Internal Feature
+        Clustering Driving, achieving global feature consistency optimization
+        without modifying the intrinsic feature representation.
+      </p>
+    </section>
+
+    <section class="video container">
+      <h2>Paper Fast Forward</h2>
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/placeholder"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+
+    <section class="method container">
+      <h2>Methodology</h2>
+      <div class="method-overview">
+        <img
+          src="images/featurepipeline.png"
+          alt="Feature Fusion Pipeline"
+          class="full-width"
+        />
+        <div class="caption">
+          General Feature Fusion Architecture supporting multi-view feature
+          integration
+        </div>
+      </div>
+      <div class="method-details">
+        <div class="method-item">
+          <img
+            src="images/nondiff.png"
+            alt="Non-Differentiable Features"
+            class="half-width"
+          />
+          <h3>Integration of Non-Differentiable Features</h3>
+          <p>
+            We pioneer the integration of non-differentiable features into the
+            differentiable 3DGS framework, fundamentally resolving the inherent
+            contradiction between the anisotropic nature of Gaussian primitives
+            and the isotropic requirements of semantic features.
+          </p>
+        </div>
+        <div class="method-item">
+          <img
+            src="images/dualdriveMe.png"
+            alt="Dual-Drive Mechanism"
+            class="half-width"
+          />
+          <h3>Physics-Inspired Dual-Drive Mechanism</h3>
+          <p>
+            Drawing inspiration from electric field modeling, we design a joint
+            optimization strategy combining external potential field driving and
+            internal feature clustering driving, characterized by intuitive
+            logic, computational efficiency, and strong interpretability.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="results container">
+      <h2>Results</h2>
+      <div class="comparison-grid">
+        <div class="comparison-item">
+          <h3>Feature Consistency Comparison</h3>
+          <img
+            src="images/ablationstudy.png"
+            alt="Ablation Study Results"
+            class="full-width"
+          />
+          <div class="caption">
+            Qualitative comparison of feature fusion quality
+          </div>
+        </div>
+        <div class="comparison-item">
+          <h3>Performance Metrics</h3>
+          <div class="metrics-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>mIoU ↑</th>
+                  <th>Accuracy ↑</th>
+                  <th>FPS ↑</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>FHGS (Ours)</td>
+                  <td>87.5%</td>
+                  <td>93.2%</td>
+                  <td>60+</td>
+                </tr>
+                <tr>
+                  <td>3DGS (baseline)</td>
+                  <td>82.1%</td>
+                  <td>89.7%</td>
+                  <td>60+</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="citation container">
+      <h2>Citation</h2>
+      <div class="citation-box">
+        <pre>
+@inproceedings{DuanFHGS2025,
+    title={FHGS: Feature-Homogenized Gaussian Splatting for 3D Scene Understanding with Multi-View Consistency},
+    author={Duan, Q. G. and Xia, Feihuang and Zhao, Benyun and Han, Mingqiao and Huang, Yijun and Chen, Ben M.},
+    booktitle={Advances in Neural Information Processing Systems},
+    year={2025}
+}
+            </pre
+        >
+      </div>
+    </section>
+
+    <footer class="container">
+      <div class="acknowledgements">
+        <p>
+          This study was supported by the InnoHK initiative of the Innovation
+          and Technology Commission of the Hong Kong Special Administrative
+          Region Government via the Hong Kong Centre for Logistics Robotics, and
+          in part by the Research Grants Council of Hong Kong SAR under Grants
+          14206821, 14217922 and 14209623.
+        </p>
+      </div>
+      <div class="credits">
+        <p>
+          The website template was adapted from
+          <a href="https://surfsplatting.github.io">2DGS</a>.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

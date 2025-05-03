@@ -1,0 +1,25 @@
+{
+    "name": "fhgs-page",
+    "version": "1.0.0",
+    "description": "FHGS: Feature-Homogenized Gaussian Splatting Project Website",
+    "main": "index.html",
+    "scripts": {
+        "start": "serve",
+        "dev": "serve"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yourusername/FHGSPage.git"
+    },
+    "keywords": [
+        "gaussian-splatting",
+        "3d-reconstruction",
+        "computer-vision",
+        "feature-fusion"
+    ],
+    "author": "FHGS Team",
+    "license": "MIT",
+    "devDependencies": {
+        "serve": "^14.0.0"
+    }
+}

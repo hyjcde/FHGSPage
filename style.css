@@ -1,0 +1,427 @@
+/* 全局样式 */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --text-color: #333;
+    --bg-color: #f9f9f9;
+    --container-width: 90%;
+    --max-width: 1200px;
+    --header-bg: linear-gradient(135deg, #3498db, #2c3e50);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: var(--container-width);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* 头部区域 */
+header {
+    background: var(--header-bg);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.highlight {
+    color: #ffcc00;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.conference {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* 作者区域 */
+.authors {
+    text-align: center;
+}
+
+.author-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.author a {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+}
+
+.affiliation {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* 链接按钮 */
+.links {
+    text-align: center;
+}
+
+.link-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover {
+    background-color: var(--secondary-color);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* 摘要部分 */
+.abstract {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.abstract h2 {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.abstract p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+/* 概述部分 */
+.overview {
+    margin: 2rem auto;
+}
+
+.comparison {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.image-container {
+    width: 100%;
+    position: relative;
+}
+
+.full-width {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.half-width {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.caption {
+    text-align: center;
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* 滑动对比器 */
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.slide-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-control {
+    width: 100%;
+    margin-top: 1rem;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: #ddd;
+    border-radius: 4px;
+    outline: none;
+}
+
+.slider-control::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+/* 视频部分 */
+.video h2 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 比例 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+/* 方法部分 */
+.method h2 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.method-overview {
+    margin-bottom: 2rem;
+}
+
+.method-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.method-item {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.method-item h3 {
+    color: var(--secondary-color);
+    margin: 1rem 0;
+}
+
+/* 结果部分 */
+.results h2 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.comparison-item {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.comparison-item h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* 表格样式 */
+.metrics-table {
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+th,
+td {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* 引用部分 */
+.citation h2 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.citation-box {
+    background-color: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+pre {
+    font-family: 'Courier New', monospace;
+    white-space: pre-wrap;
+    font-size: 0.9rem;
+}
+
+/* 页脚 */
+footer {
+    background-color: #2c3e50;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.acknowledgements,
+.credits {
+    padding: 0 1rem;
+}
+
+.credits {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.credits a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
+}
+
+/* 响应式设计 */
+@media (min-width: 768px) {
+
+    .method-details,
+    .comparison-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .subtitle {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        width: 95%;
+        padding: 1.5rem 0;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.25rem;
+    }
+
+    .author-list {
+        gap: 1rem;
+    }
+}
