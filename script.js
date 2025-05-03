@@ -1,6 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // 页面加载完成后隐藏加载动画
+  setTimeout(function () {
+    const pageLoader = document.querySelector(".page-loader");
+    if (pageLoader) {
+      pageLoader.classList.add("fade-out");
+    }
+  }, 800);
+
   // 初始化滑块控制
   initSlider();
+
+  // 初始化返回顶部按钮
+  initBackToTop();
 });
 
 function initSlider() {
@@ -163,3 +174,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }, 300);
 });
+
+// 返回顶部按钮功能
+function initBackToTop() {
+  const backToTopButton = document.getElementById("backToTop");
+
+  if (backToTopButton) {
+    // 监听滚动事件
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add("visible");
+      } else {
+        backToTopButton.classList.remove("visible");
+      }
+    });
+
+    // 点击事件
+    backToTopButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  }
+}
