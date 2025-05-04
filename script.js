@@ -28,7 +28,7 @@ function initSlider() {
 
       // 创建比较图像（FHGS图像）
       const comparisonImage = document.createElement("img");
-      comparisonImage.src = "/images/paper/compare2.png"; // FHGS特征图
+      comparisonImage.src = "images/paper/compare2.png"; // 使用相对路径尝试
       comparisonImage.alt = "FHGS Feature Image";
       comparisonImage.classList.add("slide-image", "comparison-image");
       comparisonImage.style.clipPath = "inset(0 50% 0 0)";

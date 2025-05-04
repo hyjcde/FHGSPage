@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+      }
+      .image-container {
+        margin-bottom: 30px;
+      }
+      h2 {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Image Test Page</h1>
+    <p>This page tests if images are loading correctly from different paths.</p>
+
+    <h2>Direct Path (with leading slash)</h2>
+    <div class="image-container">
+      <img src="/images/paper/start.png" alt="Test Image 1" />
+      <p>Path: /images/paper/start.png</p>
+    </div>
+
+    <h2>Relative Path (without leading slash)</h2>
+    <div class="image-container">
+      <img src="images/paper/start.png" alt="Test Image 2" />
+      <p>Path: images/paper/start.png</p>
+    </div>
+
+    <h2>Additional Test Images</h2>
+    <div class="image-container">
+      <img src="/images/paper/compare1.png" alt="Compare 1" />
+      <p>Path: /images/paper/compare1.png</p>
+    </div>
+
+    <div class="image-container">
+      <img src="/images/paper/compare2.png" alt="Compare 2" />
+      <p>Path: /images/paper/compare2.png</p>
+    </div>
+  </body>
+</html>
