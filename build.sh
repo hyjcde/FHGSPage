@@ -1,12 +1,24 @@
 #!/bin/bash
 
-# 确保构建目录存在
-mkdir -p ./public/images/paper
+# 确保Vercel输出目录存在
+mkdir -p .vercel/output/static/images/paper
 
-# 复制所有静态资源
-cp *.html ./public/
-cp *.js ./public/
-cp *.css ./public/
-cp -r images/paper/*.png ./public/images/paper/
+# 复制所有静态资源到Vercel输出目录
+cp *.html .vercel/output/static/
+cp *.js .vercel/output/static/
+cp *.css .vercel/output/static/
+cp -r images/paper/*.png .vercel/output/static/images/paper/
 
-echo "Build completed successfully!" 
+# 创建Vercel配置文件
+cat > .vercel/output/config.json << EOL
+{
+  "version": 3,
+  "routes": [
+    {
+      "handle": "filesystem"
+    }
+  ]
+}
+EOL
+
+echo "Build completed successfully for Vercel deployment!" 
