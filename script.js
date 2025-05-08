@@ -26,12 +26,27 @@ function initSlider() {
       // 设置第一张原始图像为 3DGS 图像
       slideImage.alt = "3DGS Feature Image";
 
+      // 添加图片加载错误处理
+      slideImage.onerror = function () {
+        console.error("Error loading first image:", this.src);
+        // 尝试不同的路径
+        this.src = window.location.origin + "/images/paper/compare1.png";
+      };
+
       // 创建比较图像（FHGS图像）
       const comparisonImage = document.createElement("img");
       comparisonImage.src = "images/paper/compare2.png"; // 使用相对路径尝试
       comparisonImage.alt = "FHGS Feature Image";
       comparisonImage.classList.add("slide-image", "comparison-image");
       comparisonImage.style.clipPath = "inset(0 50% 0 0)";
+
+      // 添加图片加载错误处理
+      comparisonImage.onerror = function () {
+        console.error("Error loading comparison image:", this.src);
+        // 尝试不同的路径
+        this.src = window.location.origin + "/images/paper/compare2.png";
+      };
+
       slider.appendChild(comparisonImage);
 
       // 添加分隔线
