@@ -918,6 +918,51 @@ footer::before {
     text-align: center;
 }
 
+.cuastro-promotion {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.cuastro-promotion p {
+    line-height: 1.8;
+    max-width: 80%;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+}
+
+.cuastro-promotion a {
+    color: var(--highlight-color);
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+.cuastro-promotion a:hover {
+    color: #fff;
+}
+
+.cuastro-promotion a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--highlight-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.cuastro-promotion a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
 .credits {
     margin-top: 2rem;
     text-align: center;
