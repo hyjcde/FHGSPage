@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Loading Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .test-container {
+        margin-bottom: 30px;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .test-image {
+        max-width: 100%;
+        height: auto;
+        border: 1px dashed #999;
+        padding: 5px;
+        margin: 5px 0;
+        transition: all 0.3s;
+      }
+      .success {
+        border-color: green;
+        box-shadow: 0 0 10px rgba(0, 128, 0, 0.3);
+      }
+      .error {
+        border-color: red;
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+      }
+      .status {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      .success-text {
+        color: green;
+      }
+      .error-text {
+        color: red;
+      }
+      .path {
+        font-family: monospace;
+        background-color: #f0f0f0;
+        padding: 2px 4px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Image Loading Test Page</h1>
+    <p>
+      This page tests loading the same image from different paths to diagnose
+      issues.
+    </p>
+
+    <div id="test-results"></div>
+
+    <script>
+      // 测试多个路径
+      const imageName = "compare1.png";
+      const paths = [
+        imageName, // 直接文件名
+        `/${imageName}`, // 根路径
+        `/paper/${imageName}`, // paper目录
+        `/images/paper/${imageName}`, // 标准路径
+        `images/paper/${imageName}`, // 相对路径
+        `../${imageName}`, // 上级目录
+        `https://fhgs.cuastro.org/${imageName}`, // 完整URL
+        `https://fhgs.cuastro.org/paper/${imageName}`,
+        `https://fhgs.cuastro.org/images/paper/${imageName}`,
+      ];
+
+      const testContainer = document.getElementById("test-results");
+
+      // 创建环境信息
+      const envInfo = document.createElement("div");
+      envInfo.className = "test-container";
+      envInfo.innerHTML = `
+      <h2>Environment Info</h2>
+      <pre>${JSON.stringify(
+        {
+          url: window.location.href,
+          host: window.location.host,
+          protocol: window.location.protocol,
+          pathname: window.location.pathname,
+          userAgent: navigator.userAgent,
+          timestamp: new Date().toISOString(),
+        },
+        null,
+        2
+      )}</pre>
+    `;
+      testContainer.appendChild(envInfo);
+
+      // 测试每个路径
+      paths.forEach((path, index) => {
+        const container = document.createElement("div");
+        container.className = "test-container";
+        container.innerHTML = `
+        <h2>Test ${index + 1}: <span class="path">${path}</span></h2>
+        <div>
+          <img 
+            src="${path}" 
+            alt="Test image ${index + 1}" 
+            class="test-image" 
+            id="image-${index}"
+            onerror="handleImageError(${index}, '${path.replace(/'/g, "\\'")}')"
+            onload="handleImageSuccess(${index}, '${path.replace(
+          /'/g,
+          "\\'"
+        )}')"
+          />
+        </div>
+        <div class="status" id="status-${index}">Loading...</div>
+      `;
+        testContainer.appendChild(container);
+      });
+
+      // 处理图片加载错误
+      function handleImageError(index, path) {
+        console.error(`Failed to load image at path: ${path}`);
+        const img = document.getElementById(`image-${index}`);
+        const status = document.getElementById(`status-${index}`);
+
+        img.classList.add("error");
+        status.classList.add("error-text");
+        status.textContent = `❌ Failed to load image from: ${path}`;
+      }
+
+      // 处理图片加载成功
+      function handleImageSuccess(index, path) {
+        console.log(`Successfully loaded image at path: ${path}`);
+        const img = document.getElementById(`image-${index}`);
+        const status = document.getElementById(`status-${index}`);
+
+        img.classList.add("success");
+        status.classList.add("success-text");
+        status.textContent = `✅ Successfully loaded image from: ${path}`;
+
+        // 添加尺寸信息
+        status.innerHTML += `<br>Dimensions: ${img.naturalWidth}×${img.naturalHeight} pixels`;
+      }
+    </script>
+  </body>
+</html>

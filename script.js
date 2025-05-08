@@ -30,12 +30,32 @@ function initSlider() {
       slideImage.onerror = function () {
         console.error("Error loading first image:", this.src);
         // 尝试不同的路径
-        this.src = window.location.origin + "/images/paper/compare1.png";
+        const paths = [
+          "compare1.png",
+          "/compare1.png",
+          "/paper/compare1.png",
+          "/images/paper/compare1.png",
+        ];
+
+        const tryNextPath = (index) => {
+          if (index < paths.length) {
+            console.log("Trying alternative path:", paths[index]);
+            this.src = paths[index];
+          }
+        };
+
+        // 如果当前路径失败，尝试下一个路径
+        const currentPathIndex = paths.indexOf(this.src);
+        if (currentPathIndex >= 0 && currentPathIndex < paths.length - 1) {
+          tryNextPath(currentPathIndex + 1);
+        } else {
+          tryNextPath(0);
+        }
       };
 
       // 创建比较图像（FHGS图像）
       const comparisonImage = document.createElement("img");
-      comparisonImage.src = "images/paper/compare2.png"; // 使用相对路径尝试
+      comparisonImage.src = "compare2.png"; // 尝试直接从根目录加载
       comparisonImage.alt = "FHGS Feature Image";
       comparisonImage.classList.add("slide-image", "comparison-image");
       comparisonImage.style.clipPath = "inset(0 50% 0 0)";
@@ -44,7 +64,27 @@ function initSlider() {
       comparisonImage.onerror = function () {
         console.error("Error loading comparison image:", this.src);
         // 尝试不同的路径
-        this.src = window.location.origin + "/images/paper/compare2.png";
+        const paths = [
+          "compare2.png",
+          "/compare2.png",
+          "/paper/compare2.png",
+          "/images/paper/compare2.png",
+        ];
+
+        const tryNextPath = (index) => {
+          if (index < paths.length) {
+            console.log("Trying alternative path:", paths[index]);
+            this.src = paths[index];
+          }
+        };
+
+        // 如果当前路径失败，尝试下一个路径
+        const currentPathIndex = paths.indexOf(this.src);
+        if (currentPathIndex >= 0 && currentPathIndex < paths.length - 1) {
+          tryNextPath(currentPathIndex + 1);
+        } else {
+          tryNextPath(0);
+        }
       };
 
       slider.appendChild(comparisonImage);

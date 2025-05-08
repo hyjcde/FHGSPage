@@ -15,9 +15,16 @@ cp *.css .vercel/output/static/
 cp -r images/paper/*.png .vercel/output/static/images/paper/
 echo "Copied all static resources"
 
+# 也直接复制到根目录，确保可以通过多种路径访问
+mkdir -p .vercel/output/static/paper
+cp images/paper/*.png .vercel/output/static/paper/
+# 复制到静态根目录
+cp images/paper/*.png .vercel/output/static/
+echo "Copied images to multiple locations for maximum compatibility"
+
 # 设置正确的文件权限
 chmod -R 755 .vercel/output/static
-chmod -R 644 .vercel/output/static/*.html .vercel/output/static/*.js .vercel/output/static/*.css .vercel/output/static/images/paper/*.png
+chmod 644 .vercel/output/static/*.html .vercel/output/static/*.js .vercel/output/static/*.css .vercel/output/static/images/paper/*.png .vercel/output/static/paper/*.png .vercel/output/static/*.png
 echo "Set file permissions"
 
 # 创建Vercel配置文件
@@ -29,6 +36,14 @@ cat > .vercel/output/config.json << EOL
       "src": "/images/paper/.*",
       "headers": { "cache-control": "public, max-age=31536000, immutable" }
     },
+    { 
+      "src": "/paper/.*",
+      "headers": { "cache-control": "public, max-age=31536000, immutable" }
+    },
+    { 
+      "src": "/*.png",
+      "headers": { "cache-control": "public, max-age=31536000, immutable" }
+    },
     { "handle": "filesystem" }
   ]
 }
@@ -37,7 +52,7 @@ echo "Created Vercel config file"
 
 # 创建验证文件
 echo "Deployment check file. If you can see this, the static files deployment is working." > .vercel/output/static/check.txt
-echo "Images should be available at /images/paper/ directory." >> .vercel/output/static/check.txt
+echo "Images should be available at /images/paper/ directory, /paper/ directory, or root directory." >> .vercel/output/static/check.txt
 echo "Created verification file"
 
 # 复制images目录到根目录，以支持相对路径
