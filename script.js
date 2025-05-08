@@ -31,10 +31,10 @@ function initSlider() {
         console.error("Error loading first image:", this.src);
         // 尝试不同的路径
         const paths = [
-          "compare1.png",
-          "/compare1.png",
-          "/paper/compare1.png",
           "/images/paper/compare1.png",
+          "images/paper/compare1.png",
+          "/paper/compare1.png",
+          "compare1.png",
         ];
 
         const tryNextPath = (index) => {
@@ -55,7 +55,7 @@ function initSlider() {
 
       // 创建比较图像（FHGS图像）
       const comparisonImage = document.createElement("img");
-      comparisonImage.src = "compare2.png"; // 尝试直接从根目录加载
+      comparisonImage.src = "/images/paper/compare2.png"; // 使用绝对路径
       comparisonImage.alt = "FHGS Feature Image";
       comparisonImage.classList.add("slide-image", "comparison-image");
       comparisonImage.style.clipPath = "inset(0 50% 0 0)";
@@ -65,10 +65,10 @@ function initSlider() {
         console.error("Error loading comparison image:", this.src);
         // 尝试不同的路径
         const paths = [
-          "compare2.png",
-          "/compare2.png",
-          "/paper/compare2.png",
           "/images/paper/compare2.png",
+          "images/paper/compare2.png",
+          "/paper/compare2.png",
+          "compare2.png",
         ];
 
         const tryNextPath = (index) => {
