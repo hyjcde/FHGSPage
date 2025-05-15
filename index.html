@@ -211,172 +211,328 @@
           <h3 class="comparison-title">
             Multi-View Comparison Across Different Scenes
           </h3>
+          <!-- 添加重点滑动对比区 -->
+          <div class="slider-container featured">
+            <h4>Featured Scene Comparison</h4>
+            <div class="slider">
+              <img
+                src="/images/compare/southbuilding/00010.png"
+                class="slide-image"
+                alt="3DGS Feature visualization"
+              />
+              <img
+                src="/images/compare/southbuilding/f3dgs00010.png"
+                class="comparison-image"
+                alt="FHGS Feature Image"
+              />
+              <div class="slider-overlay">
+                Drag to compare 3DGS and FHGS feature fusion
+              </div>
+              <div class="slider-divider"></div>
+              <div class="slider-handle">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="11 17 6 12 11 7"></polyline>
+                  <polyline points="18 17 13 12 18 7"></polyline>
+                </svg>
+              </div>
+              <!-- 添加标签 -->
+              <div class="slider-label left-label">3DGS</div>
+              <div class="slider-label right-label">FHGS (Ours)</div>
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              class="slider-control"
+            />
+            <div class="slider-caption">
+              <span class="slider-caption-text">
+                Interactive comparison: Drag the slider to see the difference
+                between 3DGS and FHGS - FHGS achieves more consistent feature
+                representation
+              </span>
+            </div>
+          </div>
+
           <div class="comparison-grid-container">
             <!-- 南方建筑场景 -->
             <div class="comparison-scene">
               <h4>South Building Scene</h4>
-              <div class="scene-images">
-                <div class="image-pair">
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/southbuilding/00010.png"
-                      alt="3DGS View 1"
-                      class="grid-image"
-                    />
-                    <span class="image-label">3DGS</span>
+              <div class="scene-slider-container">
+                <div class="scene-slider">
+                  <img
+                    src="/images/compare/southbuilding/00021.png"
+                    alt="3DGS View 2"
+                    class="scene-slide-image"
+                  />
+                  <img
+                    src="/images/compare/southbuilding/f3dgs00021.png"
+                    alt="FHGS View 2"
+                    class="scene-comparison-image"
+                  />
+                  <div class="slider-divider"></div>
+                  <div class="slider-handle small">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="11 17 6 12 11 7"></polyline>
+                      <polyline points="18 17 13 12 18 7"></polyline>
+                    </svg>
                   </div>
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/southbuilding/f3dgs00010.png"
-                      alt="FHGS View 1"
-                      class="grid-image"
-                    />
-                    <span class="image-label">FHGS (Ours)</span>
-                  </div>
+                  <div class="slider-label left-label small">3DGS</div>
+                  <div class="slider-label right-label small">FHGS</div>
                 </div>
-                <div class="image-pair">
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/southbuilding/00021.png"
-                      alt="3DGS View 2"
-                      class="grid-image"
-                    />
-                    <span class="image-label">3DGS</span>
-                  </div>
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/southbuilding/f3dgs00021.png"
-                      alt="FHGS View 2"
-                      class="grid-image"
-                    />
-                    <span class="image-label">FHGS (Ours)</span>
-                  </div>
-                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  class="scene-slider-control"
+                />
               </div>
             </div>
 
             <!-- 厨房场景 -->
             <div class="comparison-scene">
               <h4>Kitchen Scene</h4>
-              <div class="scene-images">
-                <div class="image-pair">
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/kitchen/00090.png"
-                      alt="3DGS Kitchen"
-                      class="grid-image"
-                    />
-                    <span class="image-label">3DGS</span>
+              <div class="scene-slider-container">
+                <div class="scene-slider">
+                  <img
+                    src="/images/compare/kitchen/00090.png"
+                    alt="3DGS Kitchen"
+                    class="scene-slide-image"
+                  />
+                  <img
+                    src="/images/compare/kitchen/f3dgs00090.png"
+                    alt="FHGS Kitchen"
+                    class="scene-comparison-image"
+                  />
+                  <div class="slider-divider"></div>
+                  <div class="slider-handle small">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="11 17 6 12 11 7"></polyline>
+                      <polyline points="18 17 13 12 18 7"></polyline>
+                    </svg>
                   </div>
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/kitchen/f3dgs00090.png"
-                      alt="FHGS Kitchen"
-                      class="grid-image"
-                    />
-                    <span class="image-label">FHGS (Ours)</span>
-                  </div>
+                  <div class="slider-label left-label small">3DGS</div>
+                  <div class="slider-label right-label small">FHGS</div>
                 </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  class="scene-slider-control"
+                />
               </div>
             </div>
 
             <!-- 花园场景 -->
             <div class="comparison-scene">
               <h4>Garden Scene</h4>
-              <div class="scene-images">
-                <div class="image-pair">
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/garden/00040.png"
-                      alt="3DGS Garden"
-                      class="grid-image"
-                    />
-                    <span class="image-label">3DGS</span>
+              <div class="scene-slider-container">
+                <div class="scene-slider">
+                  <img
+                    src="/images/compare/garden/00040.png"
+                    alt="3DGS Garden"
+                    class="scene-slide-image"
+                  />
+                  <img
+                    src="/images/compare/garden/f3dgs00040.png"
+                    alt="FHGS Garden"
+                    class="scene-comparison-image"
+                  />
+                  <div class="slider-divider"></div>
+                  <div class="slider-handle small">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="11 17 6 12 11 7"></polyline>
+                      <polyline points="18 17 13 12 18 7"></polyline>
+                    </svg>
                   </div>
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/garden/f3dgs00040.png"
-                      alt="FHGS Garden"
-                      class="grid-image"
-                    />
-                    <span class="image-label">FHGS (Ours)</span>
-                  </div>
+                  <div class="slider-label left-label small">3DGS</div>
+                  <div class="slider-label right-label small">FHGS</div>
                 </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  class="scene-slider-control"
+                />
               </div>
             </div>
 
             <!-- DTU 24场景 -->
             <div class="comparison-scene">
               <h4>DTU-24 Scene</h4>
-              <div class="scene-images">
-                <div class="image-pair">
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/dtu_24/00033.png"
-                      alt="3DGS DTU-24"
-                      class="grid-image"
-                    />
-                    <span class="image-label">3DGS</span>
+              <div class="scene-slider-container">
+                <div class="scene-slider">
+                  <img
+                    src="/images/compare/dtu_24/00033.png"
+                    alt="3DGS DTU-24"
+                    class="scene-slide-image"
+                  />
+                  <img
+                    src="/images/compare/dtu_24/f3dgs00033.png"
+                    alt="FHGS DTU-24"
+                    class="scene-comparison-image"
+                  />
+                  <div class="slider-divider"></div>
+                  <div class="slider-handle small">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="11 17 6 12 11 7"></polyline>
+                      <polyline points="18 17 13 12 18 7"></polyline>
+                    </svg>
                   </div>
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/dtu_24/f3dgs00033.png"
-                      alt="FHGS DTU-24"
-                      class="grid-image"
-                    />
-                    <span class="image-label">FHGS (Ours)</span>
-                  </div>
+                  <div class="slider-label left-label small">3DGS</div>
+                  <div class="slider-label right-label small">FHGS</div>
                 </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  class="scene-slider-control"
+                />
               </div>
             </div>
 
             <!-- DTU 15场景 -->
             <div class="comparison-scene">
               <h4>DTU-15 Scene</h4>
-              <div class="scene-images">
-                <div class="image-pair">
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/dtu_15/00032.png"
-                      alt="3DGS DTU-15"
-                      class="grid-image"
-                    />
-                    <span class="image-label">3DGS</span>
+              <div class="scene-slider-container">
+                <div class="scene-slider">
+                  <img
+                    src="/images/compare/dtu_15/00032.png"
+                    alt="3DGS DTU-15"
+                    class="scene-slide-image"
+                  />
+                  <img
+                    src="/images/compare/dtu_15/f3dgs.png"
+                    alt="FHGS DTU-15"
+                    class="scene-comparison-image"
+                  />
+                  <div class="slider-divider"></div>
+                  <div class="slider-handle small">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="11 17 6 12 11 7"></polyline>
+                      <polyline points="18 17 13 12 18 7"></polyline>
+                    </svg>
                   </div>
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/dtu_15/f3dgs.png"
-                      alt="FHGS DTU-15"
-                      class="grid-image"
-                    />
-                    <span class="image-label">FHGS (Ours)</span>
-                  </div>
+                  <div class="slider-label left-label small">3DGS</div>
+                  <div class="slider-label right-label small">FHGS</div>
                 </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  class="scene-slider-control"
+                />
               </div>
             </div>
 
             <!-- 正常图 vs 法线图对比 -->
             <div class="comparison-scene">
               <h4>Normal Map Comparison</h4>
-              <div class="scene-images">
-                <div class="image-pair">
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/dtu_24/normal_00043.png"
-                      alt="Normal Map"
-                      class="grid-image"
-                    />
-                    <span class="image-label">Normal Map</span>
+              <div class="scene-slider-container">
+                <div class="scene-slider">
+                  <img
+                    src="/images/compare/dtu_24/normal_00043.png"
+                    alt="Normal Map"
+                    class="scene-slide-image"
+                  />
+                  <img
+                    src="/images/compare/dtu_24/2dgsnormal_00043.png"
+                    alt="2DGS Normal"
+                    class="scene-comparison-image"
+                  />
+                  <div class="slider-divider"></div>
+                  <div class="slider-handle small">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="11 17 6 12 11 7"></polyline>
+                      <polyline points="18 17 13 12 18 7"></polyline>
+                    </svg>
                   </div>
-                  <div class="image-with-label">
-                    <img
-                      src="/images/compare/dtu_24/2dgsnormal_00043.png"
-                      alt="2DGS Normal"
-                      class="grid-image"
-                    />
-                    <span class="image-label">2DGS Normal</span>
-                  </div>
+                  <div class="slider-label left-label small">Normal</div>
+                  <div class="slider-label right-label small">2DGS</div>
                 </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  class="scene-slider-control"
+                />
               </div>
             </div>
           </div>

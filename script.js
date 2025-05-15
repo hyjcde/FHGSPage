@@ -7,200 +7,205 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, 800);
 
-  // 初始化滑块控制
-  initSlider();
+  // 初始化所有滑块控制
+  initMainSlider();
+  initSceneSliders();
 
   // 初始化返回顶部按钮
   initBackToTop();
 });
 
-function initSlider() {
-  const sliders = document.querySelectorAll(".slider-container");
+// 初始化主滑块
+function initMainSlider() {
+  const sliders = document.querySelectorAll(
+    ".slider-container:not(.scene-slider-container)"
+  );
 
   sliders.forEach((container) => {
     const slider = container.querySelector(".slider");
     const sliderControl = container.querySelector(".slider-control");
     const slideImage = container.querySelector(".slide-image");
+    const comparisonImage = container.querySelector(".comparison-image");
 
-    if (slider && sliderControl && slideImage) {
-      // 设置第一张原始图像为 3DGS 图像
-      slideImage.alt = "3DGS Feature Image";
-
-      // 添加图片加载错误处理
-      slideImage.onerror = function () {
-        console.error("Error loading first image:", this.src);
-        // 尝试不同的路径
-        const paths = [
-          "/images/paper/compare1.png",
-          "images/paper/compare1.png",
-          "/paper/compare1.png",
-          "compare1.png",
-        ];
-
-        const tryNextPath = (index) => {
-          if (index < paths.length) {
-            console.log("Trying alternative path:", paths[index]);
-            this.src = paths[index];
-          }
-        };
-
-        // 如果当前路径失败，尝试下一个路径
-        const currentPathIndex = paths.indexOf(this.src);
-        if (currentPathIndex >= 0 && currentPathIndex < paths.length - 1) {
-          tryNextPath(currentPathIndex + 1);
-        } else {
-          tryNextPath(0);
-        }
-      };
-
-      // 创建比较图像（FHGS图像）
-      const comparisonImage = document.createElement("img");
-      comparisonImage.src = "/images/paper/compare2.png"; // 使用绝对路径
-      comparisonImage.alt = "FHGS Feature Image";
-      comparisonImage.classList.add("slide-image", "comparison-image");
-      comparisonImage.style.clipPath = "inset(0 50% 0 0)";
-
-      // 添加图片加载错误处理
-      comparisonImage.onerror = function () {
-        console.error("Error loading comparison image:", this.src);
-        // 尝试不同的路径
-        const paths = [
-          "/images/paper/compare2.png",
-          "images/paper/compare2.png",
-          "/paper/compare2.png",
-          "compare2.png",
-        ];
-
-        const tryNextPath = (index) => {
-          if (index < paths.length) {
-            console.log("Trying alternative path:", paths[index]);
-            this.src = paths[index];
-          }
-        };
-
-        // 如果当前路径失败，尝试下一个路径
-        const currentPathIndex = paths.indexOf(this.src);
-        if (currentPathIndex >= 0 && currentPathIndex < paths.length - 1) {
-          tryNextPath(currentPathIndex + 1);
-        } else {
-          tryNextPath(0);
-        }
-      };
-
-      slider.appendChild(comparisonImage);
-
-      // 添加分隔线
-      const divider = document.createElement("div");
-      divider.className = "slider-divider";
-      slider.appendChild(divider);
-
-      // 添加滑动控制手柄
-      const handle = document.createElement("div");
-      handle.className = "slider-handle";
-      // 添加左右箭头图标到手柄
-      handle.innerHTML =
-        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>';
-      slider.appendChild(handle);
-
-      // 添加标签
-      const leftLabel = document.createElement("div");
-      leftLabel.className = "slider-label left-label";
-      leftLabel.textContent = "3DGS";
-      slider.appendChild(leftLabel);
-
-      const rightLabel = document.createElement("div");
-      rightLabel.className = "slider-label right-label";
-      rightLabel.textContent = "FHGS";
-      slider.appendChild(rightLabel);
+    if (slider && sliderControl && slideImage && comparisonImage) {
+      // 处理图片加载错误
+      handleImageErrors(slideImage);
+      handleImageErrors(comparisonImage);
 
       // 监听滑块变化
       sliderControl.addEventListener("input", function () {
         const position = this.value + "%";
         comparisonImage.style.clipPath = `inset(0 ${100 - this.value}% 0 0)`;
-        divider.style.left = position;
-        handle.style.left = position;
+        const divider = slider.querySelector(".slider-divider");
+        const handle = slider.querySelector(".slider-handle");
+        if (divider) divider.style.left = position;
+        if (handle) handle.style.left = position;
 
         // 根据滑块位置调整标签透明度
+        const leftLabel = slider.querySelector(".left-label");
+        const rightLabel = slider.querySelector(".right-label");
         const value = parseFloat(this.value);
-        leftLabel.style.opacity = (100 - value) / 100;
-        rightLabel.style.opacity = value / 100;
+        if (leftLabel) leftLabel.style.opacity = (100 - value) / 100;
+        if (rightLabel) rightLabel.style.opacity = value / 100;
       });
 
       // 初始化滑块位置
       sliderControl.dispatchEvent(new Event("input"));
 
       // 添加拖动功能
-      let isDragging = false;
-
-      handle.addEventListener("mousedown", startDrag);
-      handle.addEventListener("touchstart", startDrag);
-
-      document.addEventListener("mousemove", drag);
-      document.addEventListener("touchmove", drag);
-
-      document.addEventListener("mouseup", endDrag);
-      document.addEventListener("touchend", endDrag);
-
-      function startDrag(e) {
-        isDragging = true;
-        e.preventDefault();
-        // 添加活跃状态类
-        slider.classList.add("active-sliding");
-      }
-
-      function drag(e) {
-        if (!isDragging) return;
-
-        const rect = slider.getBoundingClientRect();
-        let x;
-
-        if (e.clientX) {
-          x = e.clientX - rect.left;
-        } else if (e.touches && e.touches[0]) {
-          x = e.touches[0].clientX - rect.left;
-        } else {
-          return;
-        }
-
-        const position = Math.max(0, Math.min(100, (x / rect.width) * 100));
-
-        sliderControl.value = position;
-        sliderControl.dispatchEvent(new Event("input"));
-      }
-
-      function endDrag() {
-        isDragging = false;
-        // 移除活跃状态类
-        const sliders = document.querySelectorAll(".slider");
-        sliders.forEach((s) => s.classList.remove("active-sliding"));
-      }
+      enableDragging(slider, sliderControl);
 
       // 添加交互提示
-      const overlay = slider.querySelector(".slider-overlay");
-      if (overlay) {
-        // 点击开始交互
-        slider.addEventListener("click", function () {
-          overlay.style.opacity = "0";
-          setTimeout(() => {
-            overlay.style.display = "none";
-          }, 500);
-        });
-
-        // 滑块移动也隐藏提示
-        sliderControl.addEventListener("input", function () {
-          overlay.style.opacity = "0";
-          setTimeout(() => {
-            overlay.style.display = "none";
-          }, 500);
-        });
-      }
+      handleOverlay(slider, sliderControl);
     }
   });
 }
 
+// 初始化场景滑块
+function initSceneSliders() {
+  const sceneContainers = document.querySelectorAll(".scene-slider-container");
+
+  sceneContainers.forEach((container) => {
+    const slider = container.querySelector(".scene-slider");
+    const sliderControl = container.querySelector(".scene-slider-control");
+    const slideImage = container.querySelector(".scene-slide-image");
+    const comparisonImage = container.querySelector(".scene-comparison-image");
+
+    if (slider && sliderControl && slideImage && comparisonImage) {
+      // 处理图片加载错误
+      handleImageErrors(slideImage);
+      handleImageErrors(comparisonImage);
+
+      // 监听滑块变化
+      sliderControl.addEventListener("input", function () {
+        const position = this.value + "%";
+        comparisonImage.style.clipPath = `inset(0 ${100 - this.value}% 0 0)`;
+        const divider = slider.querySelector(".slider-divider");
+        const handle = slider.querySelector(".slider-handle");
+        if (divider) divider.style.left = position;
+        if (handle) handle.style.left = position;
+
+        // 根据滑块位置调整标签透明度
+        const leftLabel = slider.querySelector(".left-label");
+        const rightLabel = slider.querySelector(".right-label");
+        const value = parseFloat(this.value);
+        if (leftLabel) leftLabel.style.opacity = (100 - value) / 100;
+        if (rightLabel) rightLabel.style.opacity = value / 100;
+      });
+
+      // 初始化滑块位置
+      sliderControl.dispatchEvent(new Event("input"));
+
+      // 添加拖动功能
+      enableDragging(slider, sliderControl);
+    }
+  });
+}
+
+// 处理图片加载错误
+function handleImageErrors(imgElement) {
+  if (!imgElement) return;
+
+  imgElement.onerror = function () {
+    console.error("Error loading image:", this.src);
+    // 尝试替代路径
+    const currentPath = this.src;
+    let newPath = currentPath;
+
+    if (currentPath.includes("/images/compare/")) {
+      // 尝试不同路径变化
+      if (!currentPath.startsWith("/")) {
+        newPath = "/" + currentPath;
+      }
+    }
+
+    if (newPath !== currentPath) {
+      this.src = newPath;
+    }
+  };
+}
+
+// 启用拖动功能
+function enableDragging(slider, sliderControl) {
+  let isDragging = false;
+  const handle = slider.querySelector(".slider-handle");
+
+  if (handle) {
+    handle.addEventListener("mousedown", startDrag);
+    handle.addEventListener("touchstart", startDrag);
+  }
+
+  slider.addEventListener("mousedown", startDrag);
+  slider.addEventListener("touchstart", startDrag);
+
+  document.addEventListener("mousemove", drag);
+  document.addEventListener("touchmove", drag);
+
+  document.addEventListener("mouseup", endDrag);
+  document.addEventListener("touchend", endDrag);
+
+  function startDrag(e) {
+    isDragging = true;
+    e.preventDefault();
+    // 添加活跃状态类
+    slider.classList.add("active-sliding");
+  }
+
+  function drag(e) {
+    if (!isDragging) return;
+
+    const rect = slider.getBoundingClientRect();
+    let x;
+
+    if (e.clientX) {
+      x = e.clientX - rect.left;
+    } else if (e.touches && e.touches[0]) {
+      x = e.touches[0].clientX - rect.left;
+    } else {
+      return;
+    }
+
+    const position = Math.max(0, Math.min(100, (x / rect.width) * 100));
+
+    sliderControl.value = position;
+    sliderControl.dispatchEvent(new Event("input"));
+  }
+
+  function endDrag() {
+    if (!isDragging) return;
+    isDragging = false;
+    // 移除活跃状态类
+    slider.classList.remove("active-sliding");
+  }
+}
+
+// 处理覆盖提示
+function handleOverlay(slider, sliderControl) {
+  const overlay = slider.querySelector(".slider-overlay");
+  if (overlay) {
+    // 点击开始交互
+    slider.addEventListener("click", function () {
+      overlay.style.opacity = "0";
+      setTimeout(() => {
+        overlay.style.display = "none";
+      }, 500);
+    });
+
+    // 滑块移动也隐藏提示
+    sliderControl.addEventListener("input", function () {
+      overlay.style.opacity = "0";
+      setTimeout(() => {
+        overlay.style.display = "none";
+      }, 500);
+    });
+  }
+}
+
 // 页面滚动动画
 window.addEventListener("scroll", function () {
-  const elements = document.querySelectorAll(".method-item, .comparison-item");
+  const elements = document.querySelectorAll(
+    ".method-item, .comparison-item, .comparison-scene"
+  );
 
   elements.forEach((element) => {
     const position = element.getBoundingClientRect();
@@ -217,7 +222,7 @@ document.head.insertAdjacentHTML(
   "beforeend",
   `
     <style>
-        .method-item, .comparison-item {
+        .method-item, .comparison-item, .comparison-scene {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
@@ -263,7 +268,7 @@ document.head.insertAdjacentHTML(
 document.addEventListener("DOMContentLoaded", function () {
   setTimeout(() => {
     const elements = document.querySelectorAll(
-      ".method-item, .comparison-item"
+      ".method-item, .comparison-item, .comparison-scene"
     );
     elements.forEach((element) => {
       element.classList.add("fade-in");

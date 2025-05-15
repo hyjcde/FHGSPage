@@ -1162,54 +1162,120 @@ html {
     padding-bottom: 0.5rem;
 }
 
-.scene-images {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.image-pair {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.image-with-label {
-    flex: 1;
+/* 场景滑块样式 */
+.scene-slider-container {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    margin: 0;
+    background: linear-gradient(135deg, #f0f4f8, #edf2f7);
+    padding: 0.5rem;
+    transition: all 0.3s ease;
 }
 
-.grid-image {
+.scene-slider {
+    position: relative;
     width: 100%;
-    height: auto;
+    height: 200px;
+    overflow: hidden;
     border-radius: 4px;
+    cursor: ew-resize;
+    border: 2px solid #fff;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.scene-slide-image,
+.scene-comparison-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.scene-comparison-image {
+    z-index: 2;
+}
+
+.scene-slider-control {
+    width: 100%;
+    margin-top: 0.75rem;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: linear-gradient(to right, var(--accent-color), var(--primary-color));
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.scene-slider-control:hover {
+    opacity: 1;
+}
+
+.scene-slider-control::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--accent-color);
+    background-image: radial-gradient(circle, white 30%, var(--accent-color) 30%);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
     transition: var(--transition);
 }
 
-.image-with-label:hover .grid-image {
-    transform: scale(1.05);
+.scene-slider-control::-webkit-slider-thumb:hover {
+    background: var(--primary-color);
+    background-image: radial-gradient(circle, white 30%, var(--primary-color) 30%);
+    box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.4);
+    transform: scale(1.1);
 }
 
-.image-label {
-    margin-top: 0.3rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #555;
+/* 滑块容器的突出样式 */
+.slider-container.featured {
+    margin-bottom: 2rem;
+    max-width: 100%;
+    box-shadow: var(--shadow-lg);
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #e6f0f9, #d8e7f3);
+    border: 1px solid rgba(66, 153, 225, 0.3);
+}
+
+.slider-container.featured h4 {
     text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
-.grid-caption {
-    margin-top: 1rem;
-    font-size: 1rem;
-    line-height: 1.6;
+/* 小型滑块 */
+.slider-handle.small {
+    width: 30px;
+    height: 30px;
+}
+
+.slider-label.small {
+    font-size: 0.7rem;
+    padding: 3px 8px;
 }
 
 /* 响应式处理 */
 @media (max-width: 1200px) {
     .comparison-grid-container {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .scene-slider {
+        height: 180px;
     }
 }
 
@@ -1218,7 +1284,7 @@ html {
         grid-template-columns: 1fr;
     }
 
-    .image-pair {
-        flex-direction: column;
+    .scene-slider {
+        height: 220px;
     }
 }
