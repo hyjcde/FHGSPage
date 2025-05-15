@@ -199,7 +199,7 @@
       <div class="comparison">
         <div class="image-container">
           <img
-            src="/images/paper/start.png"
+            src="/images/compare/pipeline.png"
             alt="FHGS features overview"
             class="full-width"
           />
@@ -207,31 +207,183 @@
             FHGS adopts non-differentiable features to ensure multi-view
             consistency while maintaining high-quality rendering
           </div>
-          <div class="slider-container">
-            <div class="slider">
-              <img
-                src="/images/paper/compare1.png"
-                class="slide-image"
-                alt="3DGS Feature visualization"
-              />
-              <div class="slider-overlay">
-                Drag to compare 3DGS and FHGS feature fusion
+
+          <h3 class="comparison-title">
+            Multi-View Comparison Across Different Scenes
+          </h3>
+          <div class="comparison-grid-container">
+            <!-- 南方建筑场景 -->
+            <div class="comparison-scene">
+              <h4>South Building Scene</h4>
+              <div class="scene-images">
+                <div class="image-pair">
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/southbuilding/00010.png"
+                      alt="3DGS View 1"
+                      class="grid-image"
+                    />
+                    <span class="image-label">3DGS</span>
+                  </div>
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/southbuilding/f3dgs00010.png"
+                      alt="FHGS View 1"
+                      class="grid-image"
+                    />
+                    <span class="image-label">FHGS (Ours)</span>
+                  </div>
+                </div>
+                <div class="image-pair">
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/southbuilding/00021.png"
+                      alt="3DGS View 2"
+                      class="grid-image"
+                    />
+                    <span class="image-label">3DGS</span>
+                  </div>
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/southbuilding/f3dgs00021.png"
+                      alt="FHGS View 2"
+                      class="grid-image"
+                    />
+                    <span class="image-label">FHGS (Ours)</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value="50"
-              class="slider-control"
-            />
-            <div class="slider-caption">
-              <span class="slider-caption-text">
-                Interactive comparison: Drag the slider to see the difference
-                between 3DGS and FHGS feature fusion - FHGS achieves more
-                consistent feature representation
-              </span>
+
+            <!-- 厨房场景 -->
+            <div class="comparison-scene">
+              <h4>Kitchen Scene</h4>
+              <div class="scene-images">
+                <div class="image-pair">
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/kitchen/00090.png"
+                      alt="3DGS Kitchen"
+                      class="grid-image"
+                    />
+                    <span class="image-label">3DGS</span>
+                  </div>
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/kitchen/f3dgs00090.png"
+                      alt="FHGS Kitchen"
+                      class="grid-image"
+                    />
+                    <span class="image-label">FHGS (Ours)</span>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <!-- 花园场景 -->
+            <div class="comparison-scene">
+              <h4>Garden Scene</h4>
+              <div class="scene-images">
+                <div class="image-pair">
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/garden/00040.png"
+                      alt="3DGS Garden"
+                      class="grid-image"
+                    />
+                    <span class="image-label">3DGS</span>
+                  </div>
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/garden/f3dgs00040.png"
+                      alt="FHGS Garden"
+                      class="grid-image"
+                    />
+                    <span class="image-label">FHGS (Ours)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DTU 24场景 -->
+            <div class="comparison-scene">
+              <h4>DTU-24 Scene</h4>
+              <div class="scene-images">
+                <div class="image-pair">
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/dtu_24/00033.png"
+                      alt="3DGS DTU-24"
+                      class="grid-image"
+                    />
+                    <span class="image-label">3DGS</span>
+                  </div>
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/dtu_24/f3dgs00033.png"
+                      alt="FHGS DTU-24"
+                      class="grid-image"
+                    />
+                    <span class="image-label">FHGS (Ours)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DTU 15场景 -->
+            <div class="comparison-scene">
+              <h4>DTU-15 Scene</h4>
+              <div class="scene-images">
+                <div class="image-pair">
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/dtu_15/00032.png"
+                      alt="3DGS DTU-15"
+                      class="grid-image"
+                    />
+                    <span class="image-label">3DGS</span>
+                  </div>
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/dtu_15/f3dgs.png"
+                      alt="FHGS DTU-15"
+                      class="grid-image"
+                    />
+                    <span class="image-label">FHGS (Ours)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 正常图 vs 法线图对比 -->
+            <div class="comparison-scene">
+              <h4>Normal Map Comparison</h4>
+              <div class="scene-images">
+                <div class="image-pair">
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/dtu_24/normal_00043.png"
+                      alt="Normal Map"
+                      class="grid-image"
+                    />
+                    <span class="image-label">Normal Map</span>
+                  </div>
+                  <div class="image-with-label">
+                    <img
+                      src="/images/compare/dtu_24/2dgsnormal_00043.png"
+                      alt="2DGS Normal"
+                      class="grid-image"
+                    />
+                    <span class="image-label">2DGS Normal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="caption grid-caption">
+            Multi-scene comparison between 3DGS and FHGS (our method). FHGS
+            achieves more consistent feature representation across different
+            viewpoints and scenes.
           </div>
         </div>
       </div>
@@ -281,7 +433,7 @@
       <h2>Methodology</h2>
       <div class="method-overview">
         <img
-          src="/images/paper/featurepipeline.png"
+          src="/images/compare/pipeline.png"
           alt="Feature Fusion Pipeline"
           class="full-width"
         />
@@ -293,7 +445,7 @@
       <div class="method-details">
         <div class="method-item">
           <img
-            src="/images/paper/nondiff.png"
+            src="/images/compare/nondiffdrawio.png"
             alt="Non-Differentiable Features"
             class="half-width"
           />
@@ -307,7 +459,7 @@
         </div>
         <div class="method-item">
           <img
-            src="/images/paper/dualdriveMe.png"
+            src="/images/compare/global.png"
             alt="Dual-Drive Mechanism"
             class="half-width"
           />
@@ -328,7 +480,7 @@
         <div class="comparison-item">
           <h3>Feature Consistency Comparison</h3>
           <img
-            src="/images/paper/ablationstudy.png"
+            src="/images/compare/AS.png"
             alt="Ablation Study Results"
             class="full-width"
           />
@@ -337,32 +489,15 @@
           </div>
         </div>
         <div class="comparison-item">
-          <h3>Performance Metrics</h3>
-          <div class="metrics-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Method</th>
-                  <th>mIoU ↑</th>
-                  <th>Accuracy ↑</th>
-                  <th>FPS ↑</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>FHGS (Ours)</td>
-                  <td>87.5%</td>
-                  <td>93.2%</td>
-                  <td>60+</td>
-                </tr>
-                <tr>
-                  <td>3DGS (baseline)</td>
-                  <td>82.1%</td>
-                  <td>89.7%</td>
-                  <td>60+</td>
-                </tr>
-              </tbody>
-            </table>
+          <h3>Output Visualization</h3>
+          <img
+            src="/images/compare/output.png"
+            alt="Output Visualization"
+            class="full-width"
+          />
+          <div class="caption">
+            Visualization of model output and feature consistency across
+            different views
           </div>
         </div>
       </div>

@@ -1123,3 +1123,102 @@ html {
     color: transparent;
     font-weight: 500;
 }
+
+/* 比较网格样式 */
+.comparison-title {
+    text-align: center;
+    margin: 2rem 0 1.5rem;
+    color: var(--secondary-color);
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.comparison-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.comparison-scene {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: 1rem;
+    transition: var(--transition);
+}
+
+.comparison-scene:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.comparison-scene h4 {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+.scene-images {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.image-pair {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.image-with-label {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.image-with-label:hover .grid-image {
+    transform: scale(1.05);
+}
+
+.image-label {
+    margin-top: 0.3rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+    text-align: center;
+}
+
+.grid-caption {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* 响应式处理 */
+@media (max-width: 1200px) {
+    .comparison-grid-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .comparison-grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .image-pair {
+        flex-direction: column;
+    }
+}
