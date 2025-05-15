@@ -8,8 +8,8 @@
     --light-text: #f7fafc;
     --bg-color: #f8fafc;
     --card-bg: #ffffff;
-    --container-width: 90%;
-    --max-width: 1200px;
+    --container-width: 95%;
+    --max-width: 1400px;
     --header-bg: linear-gradient(135deg, #2b6cb0, #1a365d);
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
@@ -1137,9 +1137,10 @@ html {
 .comparison-grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
-    margin: 0 -1.5rem 2rem;
-    padding: 0 0.5rem;
+    gap: 1.5rem;
+    margin: 0 auto 2rem;
+    padding: 0;
+    width: 100%;
 }
 
 .comparison-scene {
@@ -1148,8 +1149,8 @@ html {
     box-shadow: var(--shadow-md);
     padding: 1rem;
     transition: var(--transition);
-    margin: 0.5rem;
-    width: calc(100% - 1rem);
+    margin: 0;
+    width: 100%;
 }
 
 .comparison-scene:hover {
@@ -1182,7 +1183,7 @@ html {
 .scene-slider {
     position: relative;
     width: 100%;
-    height: 220px;
+    height: 280px;
     overflow: hidden;
     border-radius: 4px;
     cursor: ew-resize;
@@ -1245,9 +1246,8 @@ html {
 
 /* 滑块容器的突出样式 */
 .slider-container.featured {
-    margin: 0 -1.5rem 2rem;
-    max-width: calc(100% + 3rem);
-    width: calc(100% + 3rem);
+    margin: 0 auto 2rem;
+    width: 100%;
     box-shadow: var(--shadow-lg);
     padding: 1.5rem;
     background: linear-gradient(135deg, #e6f0f9, #d8e7f3);
@@ -1255,7 +1255,7 @@ html {
 }
 
 .slider-container.featured .slider {
-    height: 500px;
+    height: 550px;
 }
 
 .slider-container.featured h4 {
@@ -1292,7 +1292,7 @@ html {
     }
 
     .scene-slider {
-        height: 200px;
+        height: 250px;
     }
 }
 
@@ -1309,7 +1309,7 @@ html {
     }
 
     .scene-slider {
-        height: 240px;
+        height: 300px;
     }
 
     .slider-container.featured {
@@ -1319,6 +1319,6 @@ html {
     }
 
     .slider-container.featured .slider {
-        height: 350px;
+        height: 400px;
     }
 }
