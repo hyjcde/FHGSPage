@@ -1498,16 +1498,12 @@ pre {
 
 /* 滑块样式增强 */
 .scene-slider-container {
-    margin: 1.5rem 0;
+    position: relative;
+    padding: 8px;
+    max-height: 300px;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
-}
-
-.scene-slider-container:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-3px);
 }
 
 .scene-slider {
@@ -1516,6 +1512,7 @@ pre {
     border-radius: 10px;
     cursor: pointer;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    max-height: 280px;
 }
 
 .scene-slide-image,
