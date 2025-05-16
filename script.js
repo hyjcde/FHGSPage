@@ -41,12 +41,22 @@ function initMainSlider() {
         if (divider) divider.style.left = position;
         if (handle) handle.style.left = position;
 
-        // 根据滑块位置调整标签透明度
+        // 根据滑块位置调整标签透明度和缩放
         const leftLabel = slider.querySelector(".left-label");
         const rightLabel = slider.querySelector(".right-label");
         const value = parseFloat(this.value);
-        if (leftLabel) leftLabel.style.opacity = (100 - value) / 100;
-        if (rightLabel) rightLabel.style.opacity = value / 100;
+
+        if (leftLabel) {
+          const leftOpacity = Math.max(0.5, (100 - value) / 100);
+          leftLabel.style.opacity = leftOpacity;
+          leftLabel.style.transform = `scale(${leftOpacity})`;
+        }
+
+        if (rightLabel) {
+          const rightOpacity = Math.max(0.5, value / 100);
+          rightLabel.style.opacity = rightOpacity;
+          rightLabel.style.transform = `scale(${rightOpacity})`;
+        }
       });
 
       // 初始化滑块位置
@@ -85,12 +95,22 @@ function initSceneSliders() {
         if (divider) divider.style.left = position;
         if (handle) handle.style.left = position;
 
-        // 根据滑块位置调整标签透明度
+        // 根据滑块位置调整标签透明度和缩放
         const leftLabel = slider.querySelector(".left-label");
         const rightLabel = slider.querySelector(".right-label");
         const value = parseFloat(this.value);
-        if (leftLabel) leftLabel.style.opacity = (100 - value) / 100;
-        if (rightLabel) rightLabel.style.opacity = value / 100;
+
+        if (leftLabel) {
+          const leftOpacity = Math.max(0.5, (100 - value) / 100);
+          leftLabel.style.opacity = leftOpacity;
+          leftLabel.style.transform = `scale(${leftOpacity})`;
+        }
+
+        if (rightLabel) {
+          const rightOpacity = Math.max(0.5, value / 100);
+          rightLabel.style.opacity = rightOpacity;
+          rightLabel.style.transform = `scale(${rightOpacity})`;
+        }
       });
 
       // 初始化滑块位置
@@ -181,24 +201,8 @@ function enableDragging(slider, sliderControl) {
 
 // 处理覆盖提示
 function handleOverlay(slider, sliderControl) {
-  const overlay = slider.querySelector(".slider-overlay");
-  if (overlay) {
-    // 点击开始交互
-    slider.addEventListener("click", function () {
-      overlay.style.opacity = "0";
-      setTimeout(() => {
-        overlay.style.display = "none";
-      }, 500);
-    });
-
-    // 滑块移动也隐藏提示
-    sliderControl.addEventListener("input", function () {
-      overlay.style.opacity = "0";
-      setTimeout(() => {
-        overlay.style.display = "none";
-      }, 500);
-    });
-  }
+  // 覆盖层已在CSS中设置为display:none，此函数保留但不执行任何操作
+  // 保留函数以避免其他地方的调用出错
 }
 
 // 页面滚动动画
