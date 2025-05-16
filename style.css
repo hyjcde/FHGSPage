@@ -593,27 +593,39 @@ header .container {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 44px;
-    height: 44px;
+    width: 22px;
+    height: 22px;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
-    background-color: white;
-    color: var(--primary-color);
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    z-index: 11;
-    cursor: ew-resize;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 4;
     display: flex;
-    align-items: center;
     justify-content: center;
-    transition: transform 0.2s ease;
+    align-items: center;
+    cursor: grab;
+    transition: all 0.2s ease;
+}
+
+.slider-handle.small {
+    width: 20px;
+    height: 20px;
+}
+
+.slider-handle:active {
+    cursor: grabbing;
+    transform: translate(-50%, -50%) scale(1.05);
+    background-color: var(--accent-color);
 }
 
 .slider-handle:hover {
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
 
 .slider-handle svg {
-    pointer-events: none;
+    width: 14px;
+    height: 14px;
 }
 
 .slider-label {
@@ -1537,12 +1549,12 @@ pre {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 32px;
-    height: 32px;
+    width: 22px;
+    height: 22px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     z-index: 4;
     display: flex;
     justify-content: center;
@@ -1552,19 +1564,24 @@ pre {
 }
 
 .slider-handle.small {
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
 }
 
 .slider-handle:active {
     cursor: grabbing;
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) scale(1.05);
     background-color: var(--accent-color);
 }
 
 .slider-handle:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.slider-handle svg {
+    width: 14px;
+    height: 14px;
 }
 
 .slider-label {
@@ -1584,8 +1601,9 @@ pre {
 }
 
 .slider-label.small {
-    padding: 4px 10px;
-    font-size: 12px;
+    padding: 2px 8px;
+    font-size: 11px;
+    border-radius: 12px;
 }
 
 .left-label {
