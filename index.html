@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
     <!-- 预加载关键图片 -->
+    <link rel="preload" href="/images/compare/global.png" as="image" />
     <link rel="preload" href="/images/paper/start.png" as="image" />
     <link rel="preload" href="/images/paper/compare1.png" as="image" />
     <link rel="preload" href="/images/paper/compare2.png" as="image" />
@@ -195,6 +196,19 @@
     </section>
 
     <section class="overview container">
+      <!-- 添加全局特征图作为主要展示图 -->
+      <div class="main-feature-container">
+        <img
+          src="/images/compare/global.png"
+          alt="FHGS Global Feature Visualization"
+          class="main-feature-image"
+        />
+        <div class="main-feature-caption">
+          FHGS ensures feature consistency across different views while
+          maintaining high-quality 3D scene representation and understanding
+        </div>
+      </div>
+
       <h2>Feature Visualization</h2>
       <div class="comparison">
         <div class="image-container">
