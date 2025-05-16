@@ -8,8 +8,8 @@
     --light-text: #f7fafc;
     --bg-color: #f8fafc;
     --card-bg: #ffffff;
-    --container-width: 95%;
-    --max-width: 1400px;
+    --container-width: 98%;
+    --max-width: 1600px;
     --header-bg: linear-gradient(145deg, #3182ce, #1e40af);
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     --shadow-md: 0 6px 8px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
@@ -1193,10 +1193,11 @@ html {
 /* 场景对比网格 */
 .comparison-grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(calc(50% - 1rem), 1fr));
-    gap: 2rem;
-    margin: 3rem 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
     animation: fadeIn 1s ease-out 0.5s both;
+    width: 100%;
 }
 
 .comparison-scene {
@@ -1223,14 +1224,10 @@ html {
 }
 
 /* 场景滑块 */
-.scene-slider-container {
-    padding: 1rem;
-}
-
 .scene-slider {
     position: relative;
     width: 100%;
-    height: 250px;
+    height: 300px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1431,5 +1428,32 @@ pre {
     to {
         transform: scale(1);
         opacity: 1;
+    }
+}
+
+/* 调整媒体查询 */
+@media (max-width: 1400px) {
+    .comparison-grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .comparison-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .comparison-grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .scene-slider {
+        height: 350px;
+    }
+
+    :root {
+        --container-width: 92%;
     }
 }
