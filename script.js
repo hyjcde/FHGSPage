@@ -50,7 +50,7 @@ function initMainSlider() {
       // 监听滑块变化
       sliderControl.addEventListener("input", function () {
         const position = this.value + "%";
-        comparisonImage.style.clipPath = `inset(0 ${100 - this.value}% 0 0)`;
+        comparisonImage.style.clipPath = `inset(0 0 0 ${this.value}%)`;
         const divider = slider.querySelector(".slider-divider");
         const handle = slider.querySelector(".slider-handle");
         if (divider) divider.style.left = position;
@@ -94,7 +94,7 @@ function initSceneSliders() {
       // 监听滑块变化
       sliderControl.addEventListener("input", function () {
         const position = this.value + "%";
-        comparisonImage.style.clipPath = `inset(0 ${100 - this.value}% 0 0)`;
+        comparisonImage.style.clipPath = `inset(0 0 0 ${this.value}%)`;
         const divider = slider.querySelector(".slider-divider");
         const handle = slider.querySelector(".slider-handle");
         if (divider) divider.style.left = position;
