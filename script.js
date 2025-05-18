@@ -50,8 +50,8 @@ function initMainSlider() {
       // 监听滑块变化
       sliderControl.addEventListener("input", function () {
         const position = this.value + "%";
-        // 修改裁剪方向：改为从右边裁剪，值越大，右侧图片显示越多
-        comparisonImage.style.clipPath = `inset(0 ${100 - this.value}% 0 0)`;
+        // 从左侧裁剪，值越大，左侧图片显示越多
+        comparisonImage.style.clipPath = `inset(0 0 0 ${this.value}%)`;
         const divider = slider.querySelector(".slider-divider");
         const handle = slider.querySelector(".slider-handle");
         if (divider) divider.style.left = position;
@@ -61,8 +61,8 @@ function initMainSlider() {
         const leftLabel = slider.querySelector(".left-label");
         const rightLabel = slider.querySelector(".right-label");
         const value = parseFloat(this.value);
-        if (leftLabel) leftLabel.style.opacity = (100 - value) / 100;
-        if (rightLabel) rightLabel.style.opacity = value / 100;
+        if (leftLabel) leftLabel.style.opacity = value / 100;
+        if (rightLabel) rightLabel.style.opacity = (100 - value) / 100;
       });
 
       // 初始化滑块位置
@@ -95,8 +95,8 @@ function initSceneSliders() {
       // 监听滑块变化
       sliderControl.addEventListener("input", function () {
         const position = this.value + "%";
-        // 修改裁剪方向：改为从右边裁剪，值越大，右侧图片显示越多
-        comparisonImage.style.clipPath = `inset(0 ${100 - this.value}% 0 0)`;
+        // 从左侧裁剪，值越大，左侧FHGS显示越多，右侧Feature3DGS被裁剪越多
+        comparisonImage.style.clipPath = `inset(0 0 0 ${this.value}%)`;
         const divider = slider.querySelector(".slider-divider");
         const handle = slider.querySelector(".slider-handle");
         if (divider) divider.style.left = position;
@@ -106,8 +106,8 @@ function initSceneSliders() {
         const leftLabel = slider.querySelector(".left-label");
         const rightLabel = slider.querySelector(".right-label");
         const value = parseFloat(this.value);
-        if (leftLabel) leftLabel.style.opacity = (100 - value) / 100;
-        if (rightLabel) rightLabel.style.opacity = value / 100;
+        if (leftLabel) leftLabel.style.opacity = value / 100;
+        if (rightLabel) rightLabel.style.opacity = (100 - value) / 100;
       });
 
       // 初始化滑块位置
